@@ -1,0 +1,74 @@
+﻿@import "tailwindcss";
+@import "reactflow/dist/style.css";
+
+:root {
+  color-scheme: dark;
+  --bg: #07070b;
+  --bg-soft: #111125;
+  --accent: #ff7a00;
+  --accent-pink: #ff3f8f;
+  --accent-cool: #5de2ff;
+  --surface: rgba(17, 17, 37, 0.72);
+  --stroke: rgba(255, 255, 255, 0.08);
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(255, 122, 0, 0.18), transparent 45%),
+    radial-gradient(circle at 30% 60%, rgba(93, 226, 255, 0.15), transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(255, 63, 143, 0.18), transparent 40%),
+    var(--bg);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+.display {
+  font-family: var(--font-display), Impact, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.section-padding {
+  @apply px-6 py-16 md:px-14 lg:px-20;
+}
+
+.glass {
+  background: var(--surface);
+  border: 1px solid var(--stroke);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.gradient-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 122, 0, 0.8), rgba(93, 226, 255, 0.8));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+@keyframes floaty {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floaty {
+  animation: floaty 8s ease-in-out infinite;
+}
