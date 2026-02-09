@@ -12,12 +12,55 @@
   --stroke: rgba(255, 255, 255, 0.08);
 }
 
-body {
+/* body {
   background:
-    radial-gradient(circle at top left, rgba(255, 122, 0, 0.18), transparent 45%),
-    radial-gradient(circle at 30% 60%, rgba(93, 226, 255, 0.15), transparent 40%),
-    radial-gradient(circle at 80% 20%, rgba(255, 63, 143, 0.18), transparent 40%),
+    radial-gradient(
+      circle at top left,
+      rgba(255, 122, 0, 0.18),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 30% 60%,
+      rgba(93, 226, 255, 0.15),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 63, 143, 0.18),
+      transparent 40%
+    ),
     var(--bg);
+  font-family: var(--font-body), system-ui, sans-serif;
+} */
+body {
+  background: 
+    linear-gradient(to bottom,
+      #07070b 0%,
+      #07070b 30vh,
+      rgba(7, 7, 11, 0.95) 45vh,
+      rgba(7, 7, 11, 0.85) 55vh,
+      rgba(7, 7, 11, 0.7) 65vh,
+      rgba(7, 7, 11, 0.5) 75vh,
+      rgba(7, 7, 11, 0.3) 85vh,
+      rgba(7, 7, 11, 0.1) 95vh,
+      transparent 105vh
+    ),
+    radial-gradient(
+      circle at 20% 60%,
+      rgba(255, 122, 0, 0.18),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 50% 70%,
+      rgba(93, 226, 255, 0.15),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 65%,
+      rgba(255, 63, 143, 0.18),
+      transparent 40%
+    ),
+    #07070b;
   font-family: var(--font-body), system-ui, sans-serif;
 }
 
@@ -50,8 +93,14 @@ h3,
   inset: 0;
   padding: 1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(255, 122, 0, 0.8), rgba(93, 226, 255, 0.8));
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 122, 0, 0.8),
+    rgba(93, 226, 255, 0.8)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;

@@ -1,31 +1,46 @@
 ﻿"use client";
 
 import { motion } from "framer-motion";
-import { FlowSection } from "@/components/flow-section";
+import { useState } from "react";
 import { HoverBorderGradient } from "@/components/hover-border-gradient";
 import { SpotlightCard } from "@/components/spotlight-card";
 import { SplineEmbed } from "@/components/spline-embed";
 
-const splineScene = "https://prod.spline.design/bOW2v8OYWMfojjQy/scene.splinecode";
+const splineScene =
+  "https://prod.spline.design/geAUuE-ImIQdb6WC/scene.splinecode";
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
 };
 
 export default function Home() {
+  const [sendState, setSendState] = useState<
+    "idle" | "sending" | "sent" | "error"
+  >("idle");
+
   return (
     <div className="min-h-screen">
       <header className="sticky top-0 z-20 border-b border-white/10 bg-black/50 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
           <div className="flex items-center gap-3 text-lg font-semibold tracking-wide">
             <span className="text-2xl text-orange-400">/</span>
-            <span className="uppercase"><a href="/">zenivo</a></span>
+            <span className="uppercase">
+              <a href="/">zenivo</a>
+            </span>
           </div>
           <nav className="hidden items-center gap-8 text-xs uppercase tracking-[0.25em] text-white/70 md:flex">
-            <a href="#services" className="hover:text-white">Services</a>
-            <a href="#flow" className="hover:text-white">Flow</a>
-            <a href="#requirements" className="hover:text-white">Requirements</a>
-            <a href="#contact" className="hover:text-white">Contact</a>
+            <a href="#services" className="hover:text-white">
+              Services
+            </a>
+            <a href="#portfolio" className="hover:text-white">
+              Portfolio
+            </a>
+            <a href="#requirements" className="hover:text-white">
+              Requirements
+            </a>
+            <a href="#contact" className="hover:text-white">
+              Contact
+            </a>
           </nav>
           <HoverBorderGradient>
             <a href="#contact">Start a Project</a>
@@ -33,7 +48,7 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="section-padding">
+      <section className="section-padding bg-gradient-to-b from-black from-50% to-transparent backdrop-blur">
         <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <motion.div
             {...fadeUp}
@@ -56,7 +71,9 @@ export default function Home() {
                 <a href="#contact">Get a Quote</a>
               </button>
               <button className="rounded-full border border-white/20 px-6 py-3 text-sm text-white/80">
-                <a href="#services" className="hover:text-white">View Services</a>
+                <a href="#services" className="hover:text-white">
+                  View Services
+                </a>
               </button>
             </div>
             <div className="grid gap-6 rounded-3xl border border-white/10 bg-white/5 p-6 text-sm text-white/70 md:grid-cols-3">
@@ -90,7 +107,9 @@ export default function Home() {
             <div className="absolute -top-10 left-10 h-24 w-24 rounded-full bg-orange-500/40 blur-2xl" />
             <div className="absolute bottom-6 right-8 h-20 w-20 rounded-full bg-cyan-400/40 blur-2xl" />
             <div className="absolute bottom-6 right-8 h-20 w-20 rounded-full bg-cyan-400/40 blur-2xl" />
-            <SplineEmbed scene={splineScene} />
+            <div className="hidden sm:block">
+              <SplineEmbed scene={splineScene} />
+            </div>
           </motion.div>
         </div>
       </section>
@@ -98,7 +117,9 @@ export default function Home() {
       <section id="services" className="section-padding">
         <div className="mx-auto max-w-6xl">
           <motion.div {...fadeUp} className="max-w-xl space-y-4">
-            <h2 className="text-3xl md:text-4xl">Services built for momentum</h2>
+            <h2 className="text-3xl md:text-4xl">
+              Services built for momentum
+            </h2>
             <p className="text-white/70">
               We cover strategy, design, and engineering so your launch feels
               cohesive and fast.
@@ -125,16 +146,85 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="flow" className="section-padding">
+      <section id="portfolio" className="section-padding">
         <div className="mx-auto max-w-6xl space-y-10">
           <div className="max-w-xl space-y-4">
-            <h2 className="text-3xl md:text-4xl">Node-based onboarding flow</h2>
+            <h2 className="text-3xl md:text-4xl">Prior Work</h2>
             <p className="text-white/70">
-              We visualize the plan so every milestone is clear. Drag the nodes
-              and explore the flow.
+              A selection of recent projects that showcase our approach, craft,
+              and results.
             </p>
           </div>
-          <FlowSection />
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {[
+              {
+                title: "E-Commerce Platform",
+                client: "Retail Startup",
+                description:
+                  "Full-stack marketplace with real-time inventory, Stripe payments, and mobile-responsive checkout.",
+                tech: ["Next.js", "Postgres", "Stripe"],
+                year: "2025",
+              },
+              {
+                title: "SaaS Dashboard",
+                client: "Analytics Firm",
+                description:
+                  "Data visualization platform with role-based access, CSV exports, and interactive charts.",
+                tech: ["React", "D3.js", "Firebase"],
+                year: "2025",
+              },
+              {
+                title: "Mobile Fitness App",
+                client: "Health & Wellness",
+                description:
+                  "Cross-platform app with workout tracking, push notifications, and social sharing features.",
+                tech: ["React Native", "Node.js", "MongoDB"],
+                year: "2024",
+              },
+              {
+                title: "Brand Landing Page",
+                client: "Design Agency",
+                description:
+                  "High-conversion landing with scroll animations, lead capture forms, and CMS integration.",
+                tech: ["Next.js", "Framer Motion", "Sanity"],
+                year: "2024",
+              },
+            ].map((project) => (
+              <div
+                key={project.title}
+                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-8 transition-all hover:border-white/20 hover:shadow-2xl"
+              >
+                <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-gradient-to-br from-orange-400/20 to-cyan-400/20 blur-3xl transition-opacity group-hover:opacity-100 opacity-70" />
+                <div className="relative space-y-4">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h3 className="text-xl font-semibold text-white">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-white/50">{project.client}</p>
+                    </div>
+                    <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70">
+                      {project.year}
+                    </span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-white/70">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -189,7 +279,9 @@ export default function Home() {
       <section id="contact" className="section-padding">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_1.1fr]">
           <div className="space-y-6">
-            <h2 className="text-4xl md:text-5xl">Let’s build something sharp.</h2>
+            <h2 className="text-4xl md:text-5xl">
+              Let’s build something sharp.
+            </h2>
             <p className="text-white/70">
               Tell us about your project. We respond within 24–48 hours with a
               clear next step.
@@ -199,13 +291,13 @@ export default function Home() {
                 <p className="text-xs uppercase tracking-widest text-white/40">
                   Email
                 </p>
-                <p className="text-white">hello@zenivo.com</p>
+                <p className="text-white">care.zenivo@gmail.com</p>
               </div>
               <div>
                 <p className="text-xs uppercase tracking-widest text-white/40">
                   Phone
                 </p>
-                <p className="text-white">+1 (555) 123-9876</p>
+                <p className="text-white">+91 93604 32078</p>
               </div>
               <div>
                 <p className="text-xs uppercase tracking-widest text-white/40">
@@ -216,13 +308,43 @@ export default function Home() {
             </div>
           </div>
 
-          <form className="glass rounded-3xl p-8">
+          <form
+            className="glass rounded-3xl p-8"
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const target = e.target as HTMLFormElement;
+              const formData = new FormData(target);
+              const payload = Object.fromEntries(formData.entries());
+              setSendState("sending");
+
+              try {
+                const res = await fetch("/api/contact", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(payload),
+                });
+                if (res.ok) {
+                  setSendState("sent");
+                  target.reset();
+                  setTimeout(() => setSendState("idle"), 3000);
+                } else {
+                  setSendState("error");
+                  setTimeout(() => setSendState("idle"), 3000);
+                }
+              } catch (err) {
+                setSendState("error");
+                setTimeout(() => setSendState("idle"), 3000);
+              }
+            }}
+          >
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-2">
                 <label className="text-xs uppercase tracking-widest text-white/40">
                   Full name
                 </label>
                 <input
+                  name="name"
+                  required
                   className="w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white"
                   placeholder="Your name"
                 />
@@ -232,6 +354,9 @@ export default function Home() {
                   Email
                 </label>
                 <input
+                  name="email"
+                  type="email"
+                  required
                   className="w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white"
                   placeholder="you@company.com"
                 />
@@ -240,7 +365,10 @@ export default function Home() {
                 <label className="text-xs uppercase tracking-widest text-white/40">
                   Service
                 </label>
-                <select className="w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white">
+                <select
+                  name="service"
+                  className="w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white"
+                >
                   <option>App Development</option>
                   <option>Web Development</option>
                   <option>Landing Page</option>
@@ -251,7 +379,10 @@ export default function Home() {
                 <label className="text-xs uppercase tracking-widest text-white/40">
                   Budget
                 </label>
-                <select className="w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white">
+                <select
+                  name="budget"
+                  className="w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white"
+                >
                   <option>$2k–$5k</option>
                   <option>$5k–$15k</option>
                   <option>$15k–$35k</option>
@@ -264,15 +395,22 @@ export default function Home() {
                 Project details
               </label>
               <textarea
+                name="details"
                 className="min-h-[140px] w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white"
                 placeholder="Tell us about goals, scope, and timeline."
               />
             </div>
             <button
               type="submit"
-              className="mt-6 w-full rounded-full bg-gradient-to-r from-orange-400 via-pink-400 to-cyan-300 px-6 py-3 text-sm font-semibold text-black"
+              disabled={sendState === "sending" || sendState === "sent"}
+              aria-busy={sendState === "sending"}
+              className="mt-6 w-full rounded-full bg-gradient-to-r from-orange-400 via-pink-400 to-cyan-300 px-6 py-3 text-sm font-semibold text-black disabled:opacity-60"
             >
-              Send Inquiry
+              {sendState === "sending"
+                ? "Sending…"
+                : sendState === "sent"
+                  ? "Sent"
+                  : "Send Inquiry"}
             </button>
           </form>
         </div>
@@ -285,10 +423,18 @@ export default function Home() {
             <p>Bold development for ambitious teams.</p>
           </div>
           <div className="flex flex-wrap gap-6">
-            <a href="#services" className="hover:text-white">Services</a>
-            <a href="#flow" className="hover:text-white">Flow</a>
-            <a href="#requirements" className="hover:text-white">Requirements</a>
-            <a href="#contact" className="hover:text-white">Contact</a>
+            <a href="#services" className="hover:text-white">
+              Services
+            </a>
+            <a href="#portfolio" className="hover:text-white">
+              Portfolio
+            </a>
+            <a href="#requirements" className="hover:text-white">
+              Requirements
+            </a>
+            <a href="#contact" className="hover:text-white">
+              Contact
+            </a>
           </div>
           <p>© 2026 zenivo. All rights reserved.</p>
         </div>

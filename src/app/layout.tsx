@@ -15,7 +15,7 @@ const bodyFont = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "zenivo — Bold Digital Craft",
+  title: "Zenivo — Bold Digital Craft",
   description:
     "zenivo is a creative dev studio for app development, web development, and high-converting landing pages.",
 };
